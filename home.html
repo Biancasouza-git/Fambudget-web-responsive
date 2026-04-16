@@ -1,28 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
 <body>
   <div class="layout">
     
-    <!-- Sidebar -->
     <aside class="sidebar">
-      <!-- Logo -->
-      <!-- Menu -->
+      <h2>FamBudget</h2>
+      <ul>
+        <li onclick="irPara('home.html')">Início</li>
+        <li onclick="irPara('transacoes.html')">Transações</li>
+        <li onclick="irPara('orcamentos.html')">Orçamentos</li>
+        <li onclick="irPara('relatorios.html')">Relatórios</li>
+      </ul>
     </aside>
 
     <!-- Conteúdo principal -->
     <main class="main-content">
+      <div class="topo">
+        <h1 id="saudacao">Olá!</h1>
+
+        <div>
+          <span id="nomeUsuario"></span>
+          <button onclick="logout()">Sair</button>
+        </div>
+      </div>
       
-      <!-- Header -->
-      <header class="header"></header>
+      <!-- Saldo -->
+      <div class="card">
+        <h3>Saldo Atual</h3>
+        <p id="saldo" class="saldo">R$0,00</p>
+      </div>
+      
+      <!-- Cards -->
+      <div class="cards">
+        <div class="card">
+          <h3>Despesas</h3>
+          <p id="despesas">R$0,00</p>
+        </div>
 
-      <!-- Cards principais -->
-      <section class="summary-cards"></section>
+        <div class="card">
+          <h3>Receitas</h3>
+          <p id="receitas">R$0,00</p>
+        </div>
 
-      <!-- Orçamento -->
-      <section class="budget"></section>
-
-      <!-- Metas -->
-      <section class="goals"></section>
-
+        <div class="card">
+          <h3>Orçamento</h3>
+          <progress id="orcamento" value="0" max="100"></progress>
+          <p id="porcentagem">0%</p>
+        </div>
+      </div>
     </main>
+    
 
   </div>
 </body>
+</html>
