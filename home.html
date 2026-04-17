@@ -1,61 +1,119 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>FamBudget</title>
+
+  <!-- CSS externo -->
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <div class="layout">
-    
-    <aside class="sidebar">
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div>
       <h2>FamBudget</h2>
-      <ul>
+
+      <ul class="menu">
         <li onclick="irPara('home.html')">Início</li>
         <li onclick="irPara('transacoes.html')">Transações</li>
         <li onclick="irPara('orcamentos.html')">Orçamentos</li>
         <li onclick="irPara('relatorios.html')">Relatórios</li>
       </ul>
-    </aside>
+    </div>
 
-    <!-- Conteúdo principal -->
-    <main class="main-content">
-      <div class="topo">
-        <h1 id="saudacao">Olá!</h1>
+    <div>
+      <div class="divider"></div>
 
-        <div>
-          <span id="nomeUsuario"></span>
-          <button onclick="logout()">Sair</button>
+      <ul class="menu">
+        <li onclick="irPara('configuracoes.html')">Configurações</li>
+        <li onclick="logout()">Sair</li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- CONTEÚDO -->
+  <main class="main-content">
+
+    <!-- TOPO -->
+    <div class="topo">
+      <h1 id="saudacao">Olá, Marcos!</h1>
+
+      <div class="user-area">
+        <span id="nomeUsuario">Marcos</span>
+        <div class="avatar">M</div>
+      </div>
+    </div>
+
+    <!-- SALDO -->
+    <div class="card">
+      <h3>Saldo Atual</h3>
+      <p class="saldo" id="saldo">R$0,00</p>
+    </div>
+
+    <!-- CARDS -->
+    <div class="cards">
+      <div class="card despesas">
+        <h3>Despesas</h3>
+        <p id="despesas">R$0,00</p>
+      </div>
+
+      <div class="card receitas">
+        <h3>Receitas</h3>
+        <p id="receitas">R$0,00</p>
+      </div>
+    </div>
+
+    <!-- ORÇAMENTO -->
+    <div class="card orcamento-card">
+      <h3>Orçamento</h3>
+      <progress id="orcamento" value="40" max="100"></progress>
+      <p id="porcentagem">40% do limite</p>
+    </div>
+
+    <!-- METAS -->
+    <div class="card metas">
+      <h3>Metas de Economia</h3>
+
+      <div class="meta-item">
+        <div class="meta-info">
+          <span>Viagem em Família</span>
+          <span>60%</span>
+        </div>
+        <div class="meta-bar">
+          <div class="meta-progress" style="width:60%"></div>
         </div>
       </div>
-      
-      <!-- Saldo -->
-      <div class="card">
-        <h3>Saldo Atual</h3>
-        <p id="saldo" class="saldo">R$0,00</p>
-      </div>
-      
-      <!-- Cards -->
-      <div class="cards">
-        <div class="card">
-          <h3>Despesas</h3>
-          <p id="despesas">R$0,00</p>
-        </div>
 
-        <div class="card">
-          <h3>Receitas</h3>
-          <p id="receitas">R$0,00</p>
+      <div class="meta-item">
+        <div class="meta-info">
+          <span>Reserva de Emergência</span>
+          <span>30%</span>
         </div>
-
-        <div class="card">
-          <h3>Orçamento</h3>
-          <progress id="orcamento" value="0" max="100"></progress>
-          <p id="porcentagem">0%</p>
+        <div class="meta-bar">
+          <div class="meta-progress" style="width:30%"></div>
         </div>
       </div>
-    </main>
-    
 
-  </div>
+    </div>
+
+  </main>
+
+</div>
+
+<script>
+function irPara(pagina){
+  window.location.href = pagina;
+}
+
+function logout(){
+  alert("Logout realizado!");
+}
+</script>
+
 </body>
 </html>
