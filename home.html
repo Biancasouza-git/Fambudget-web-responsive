@@ -5,101 +5,146 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FamBudget</title>
 
-  <!-- CSS externo -->
   <link rel="stylesheet" href="home.css">
 </head>
 
 <body>
+<body>
+
+<!-- TOPO GLOBAL -->
+<header class="topo">
+  <div class="logo">
+    <img src="imagem/logo_fambudget.png" alt="FamBudget">
+    <span>FamBudget</span>
+  </div>
+
+  <div class="user">
+    <div class="avatar">M</div>
+    <span>Marcos</span>
+  </div>
+</header>
 
 <div class="layout">
 
   <!-- SIDEBAR -->
   <aside class="sidebar">
     <div>
-      <h2>FamBudget</h2>
-
       <ul class="menu">
-        <li onclick="irPara('home.html')">Início</li>
-        <li onclick="irPara('transacoes.html')">Transações</li>
-        <li onclick="irPara('orcamentos.html')">Orçamentos</li>
-        <li onclick="irPara('relatorios.html')">Relatórios</li>
-      </ul>
-    </div>
 
-    <div>
+        <li onclick="irPara('home.html')">
+          <img src="vetorhome/casa.png" alt="">Início
+        </li>
+
+        <li onclick="irPara('transacoes.html')">
+          <img src="vetorhome/carteira.png" alt="">Transações
+        </li>
+        
+        <li onclick="irPara('orcamentos.html')">
+          <img src="vetorhome/ocamento.png" alt="">Orçamentos
+        </li>
+        
+        <li onclick="irPara('relatorios.html')">
+          <img src="vetorhome/relatorio.png" alt="">Relatórios
+        </li>
+
+      </ul>
+
       <div class="divider"></div>
 
       <ul class="menu">
-        <li onclick="irPara('configuracoes.html')">Configurações</li>
-        <li onclick="logout()">Sair</li>
+        <li onclick="irPara('configuracoes.html')">
+          <img src="vetorhome/configuracoes.png" alt="">Configurações
+        </li>
+
+        <li onclick="logout()">
+          <img src="vetorhome/logout.png" alt="">Sair
+        </li>
       </ul>
     </div>
   </aside>
 
   <!-- CONTEÚDO -->
   <main class="main-content">
+    <div class="conteudo">
 
-    <!-- TOPO -->
-    <div class="topo">
-      <h1 id="saudacao">Olá, Marcos!</h1>
+      <!-- SALDO -->
+      <div class="card">
+        <h1 id="saudacao">Olá, Marcos!</h1>
+        <h3>Saldo Atual</h3>
+  
+        <p class="saldo" id="saldo">
+          <span id="valor">R$0,00</span>
+          <span id="seta">↑</span>
+        </p>
 
-      <div class="user-area">
-        <span id="nomeUsuario">Marcos</span>
-        <div class="avatar">M</div>
-      </div>
-    </div>
-
-    <!-- SALDO -->
-    <div class="card">
-      <h3>Saldo Atual</h3>
-      <p class="saldo" id="saldo">R$0,00</p>
-    </div>
-
-    <!-- CARDS -->
-    <div class="cards">
-      <div class="card despesas">
-        <h3>Despesas</h3>
-        <p id="despesas">R$0,00</p>
+        <p id="mensagem-saldo" class="mensagem"></p>
+        
       </div>
 
-      <div class="card receitas">
-        <h3>Receitas</h3>
-        <p id="receitas">R$0,00</p>
-      </div>
-    </div>
 
-    <!-- ORÇAMENTO -->
-    <div class="card orcamento-card">
-      <h3>Orçamento</h3>
-      <progress id="orcamento" value="40" max="100"></progress>
-      <p id="porcentagem">40% do limite</p>
-    </div>
-
-    <!-- METAS -->
-    <div class="card metas">
-      <h3>Metas de Economia</h3>
-
-      <div class="meta-item">
-        <div class="meta-info">
-          <span>Viagem em Família</span>
-          <span>60%</span>
+      <!-- CARDS -->
+      <div class="cards"> 
+        <div class="resumo card-resumo-despesas">
+          <div class="card-top">
+            <div class="icon-box">
+              <img src="vetorhome/carteirinha.png" alt="">
+            </div>
+            <span>Despesas</span>
+          </div>
+          <h2 id="total-despesas">R$</h2>
         </div>
-        <div class="meta-bar">
-          <div class="meta-progress" style="width:60%"></div>
-        </div>
-      </div>
 
-      <div class="meta-item">
-        <div class="meta-info">
-          <span>Reserva de Emergência</span>
-          <span>30%</span>
+        <div class="resumo card-resumo-receitas">
+          <div class="card-top">
+            <div class="icon-box">
+              <img src="vetorhome/cartoes-com-cifrao.png" alt="">
+            </div>
+            <span>Receitas</span>
+          </div>
+          <h2 id="total-receitas">R$</h2>
         </div>
-        <div class="meta-bar">
-          <div class="meta-progress" style="width:30%"></div>
-        </div>
-      </div>
-
     </div>
+      <!-- ORÇAMENTO -->
+      <div class="card orcamento-card">
+        <p class="titulo-orcamento">
+          <img src="vetorhome/pagamento-com-cartao-de-credito.png" alt="icone">
+          Orçamentos
+        </p>
+        
+        <div class="orcamento-container">
+          <progress id="orcamento" value="40" max="100"></progress>
+          <span class="porcentagem">40% do limite</span>
+        </div>
+    
+      </div>
+
+      <!-- METAS -->
+      <div class="card metas">
+        <h3>Metas de Economia</h3>
+
+        <div class="meta-item">
+          <div class="meta-info">
+            <span>Viagem em Família</span>
+            <span>60%</span>
+          </div>
+          <div class="meta-bar">
+            <div class="meta-progress" style="width:60%"></div>
+          </div>
+        </div>
+
+        <div class="meta-item">
+          <div class="meta-info">
+            <span>Reserva de Emergência</span>
+            <span>30%</span>
+          </div>
+          <div class="meta-bar">
+            <div class="meta-progress" style="width:30%"></div>
+          </div>
+        </div>
+
+      </div>
+
+    </div> 
 
   </main>
 
