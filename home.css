@@ -1,170 +1,164 @@
-/* Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Segoe UI", Arial, sans-serif;
-  }
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FamBudget</title>
+
+  <link rel="stylesheet" href="home.css">
+</head>
+
+<body>
+<body>
+
+<!-- TOPO GLOBAL -->
+<header class="topo">
+  <div class="logo">
+    <img src="imagem/logo_fambudget.png" alt="FamBudget">
+    <span>FamBudget</span>
+  </div>
+
+  <div class="user">
+    <div class="avatar">M</div>
+    <span>Marcos</span>
+  </div>
+</header>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div>
+      <ul class="menu">
+
+        <li onclick="irPara('home.html')">
+          <img src="vetorhome/casa.png" alt="">Início
+        </li>
+
+        <li onclick="irPara('transacoes.html')">
+          <img src="vetorhome/carteira.png" alt="">Transações
+        </li>
+        
+        <li onclick="irPara('orcamentos.html')">
+          <img src="vetorhome/ocamento.png" alt="">Orçamentos
+        </li>
+        
+        <li onclick="irPara('relatorios.html')">
+          <img src="vetorhome/relatorio.png" alt="">Relatórios
+        </li>
+
+      </ul>
+
+      <div class="divider"></div>
+
+      <ul class="menu">
+        <li onclick="irPara('configuracoes.html')">
+          <img src="vetorhome/configuracoes.png" alt="">Configurações
+        </li>
+
+        <li onclick="logout()">
+          <img src="vetorhome/logout.png" alt="">Sair
+        </li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- CONTEÚDO -->
+  <main class="main-content">
+    <div class="conteudo">
+
+      <!-- SALDO -->
+      <div class="card">
+        <h1 id="saudacao">Olá, Marcos!</h1>
+        <h3>Saldo Atual</h3>
   
-  body {
-    background-color: #f5f6f8;
-  }
-  
-  /* Layout */
-  .layout {
-    display: flex;
-    height: 100vh;
-  }
-  
-  /* SIDEBAR */
-  .sidebar {
-    width: 220px;
-    background: #fff;
-    padding: 20px;
-    border-right: 1px solid #e0e0e0;
-  
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  
-  .sidebar h2 {
-    color: #2e7d32;
-    margin-bottom: 20px;
-  }
-  
-  .menu {
-    list-style: none;
-  }
-  
-  .menu li {
-    padding: 12px;
-    margin-bottom: 10px;
-    border-radius: 8px;
-    cursor: pointer;
-    color: #555;
-    transition: 0.3s;
-  }
-  
-  .menu li:hover {
-    background: #e8f5e9;
-    color: #2e7d32;
-  }
-  
-  .divider {
-    height: 1px;
-    background: #e0e0e0;
-    margin: 20px 0;
-  }
-  
-  /* MAIN */
-  .main-content {
-    flex: 1;
-    padding: 30px;
-  }
-  
-  /* TOPO */
-  .topo {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 25px;
-  }
-  
-  .user-area {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .avatar {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #4caf50, #2e7d32);
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-  }
-  
-  /* CARDS */
-  .card {
-    background: white;
-    padding: 20px;
-    border-radius: 14px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  }
-  
-  .saldo {
-    font-size: 32px;
-    color: #2e7d32;
-    font-weight: bold;
-  }
-  
-  /* GRID */
-  .cards {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    margin-top: 20px;
-  }
-  
-  .despesas {
-    background: #fff3cd;
-  }
-  
-  .receitas {
-    background: #cfe2ff;
-  }
-  
-  /* ORÇAMENTO */
-  .orcamento-card {
-    margin-top: 20px;
-  }
-  
-  progress {
-    width: 100%;
-    height: 12px;
-    margin: 10px 0;
-  }
-  
-  progress::-webkit-progress-bar {
-    background: #e0e0e0;
-    border-radius: 10px;
-  }
-  
-  progress::-webkit-progress-value {
-    background: #2e7d32;
-    border-radius: 10px;
-  }
-  
-  /* METAS */
-  .metas {
-    margin-top: 20px;
-  }
-  
-  .meta-item {
-    margin-top: 15px;
-  }
-  
-  .meta-info {
-    display: flex;
-    justify-content: space-between;
-    font-size: 14px;
-    margin-bottom: 8px;
-  }
-  
-  .meta-bar {
-    width: 100%;
-    height: 10px;
-    background: #e0e0e0;
-    border-radius: 10px;
-    overflow: hidden;
-  }
-  
-  .meta-progress {
-    height: 100%;
-    background: #4caf50;
-  }
+        <p class="saldo" id="saldo">
+          <span id="valor">R$0,00</span>
+          <span id="seta">↑</span>
+        </p>
+
+        <p id="mensagem-saldo" class="mensagem"></p>
+        
+      </div>
+
+
+      <!-- CARDS -->
+      <div class="cards"> 
+        <div class="resumo card-resumo-despesas">
+          <div class="card-top">
+            <div class="icon-box">
+              <img src="vetorhome/carteirinha.png" alt="">
+            </div>
+            <span>Despesas</span>
+          </div>
+          <h2 id="total-despesas">R$</h2>
+        </div>
+
+        <div class="resumo card-resumo-receitas">
+          <div class="card-top">
+            <div class="icon-box">
+              <img src="vetorhome/cartoes-com-cifrao.png" alt="">
+            </div>
+            <span>Receitas</span>
+          </div>
+          <h2 id="total-receitas">R$</h2>
+        </div>
+    </div>
+      <!-- ORÇAMENTO -->
+      <div class="card orcamento-card">
+        <p class="titulo-orcamento">
+          <img src="vetorhome/pagamento-com-cartao-de-credito.png" alt="icone">
+          Orçamentos
+        </p>
+        
+        <div class="orcamento-container">
+          <progress id="orcamento" value="40" max="100"></progress>
+          <span class="porcentagem">40% do limite</span>
+        </div>
+    
+      </div>
+
+      <!-- METAS -->
+      <div class="card metas">
+        <h3>Metas de Economia</h3>
+
+        <div class="meta-item">
+          <div class="meta-info">
+            <span>Viagem em Família</span>
+            <span>60%</span>
+          </div>
+          <div class="meta-bar">
+            <div class="meta-progress" style="width:60%"></div>
+          </div>
+        </div>
+
+        <div class="meta-item">
+          <div class="meta-info">
+            <span>Reserva de Emergência</span>
+            <span>30%</span>
+          </div>
+          <div class="meta-bar">
+            <div class="meta-progress" style="width:30%"></div>
+          </div>
+        </div>
+
+      </div>
+
+    </div> 
+
+  </main>
+
+</div>
+
+<script>
+function irPara(pagina){
+  window.location.href = pagina;
+}
+
+function logout(){
+  alert("Logout realizado!");
+}
+</script>
+
+</body>
+</html>
