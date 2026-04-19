@@ -16,7 +16,7 @@ form.addEventListener("submit", async (event) => {
   const password = document.getElementById("password").value;
 
   try {
-    const response = await fetch("http://localhost:3000/auth/login", {
+    const response = await fetch("https://www.manage-control-dev.com.br/api/v1/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -28,13 +28,13 @@ form.addEventListener("submit", async (event) => {
 
     console.log("RESPOSTA LOGIN:", data); 
 
-    if (!response.ok || !data.access_token) {
+    if (!response.ok || !data.token.accessToken) {
       abrirPopup(data.message || "Email ou senha inválidos");
       return;
     }
 
-    localStorage.setItem("access_token", data.access_token);
-    localStorage.setItem("refresh_token", data.refresh_token);
+    localStorage.setItem("accessToken", data.token.accessToken);
+    localStorage.setItem("refreshToken", data.token.refreshToken);
 
     window.location.href = "home.html";
 
