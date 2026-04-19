@@ -380,8 +380,13 @@ a {
   margin-top: 10px;
   padding: 8px 15px;
   border: none;
-  background-color: green;
+  background-color: #138a3f;
   color: white;
   border-radius: 6px;
   cursor: pointer;
+}
+
+.popup-content button:hover{
+    background-color: #16a34a;
+    transform: translateY(-1px);
 }
