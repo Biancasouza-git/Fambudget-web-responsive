@@ -73,9 +73,9 @@
                     na sua conta.
                 </p>
 
-                <form action="home.html">
-                    <input type="email" class="input" placeholder="E-mail" required>
-                    <input type="password" class="input" placeholder="Senha" required>
+                <form id="loginForm">
+                    <input type="email" id="email" class="input" placeholder="E-mail" required>
+                    <input type="password" id="password" class="input" placeholder="Senha" required>
 
                     <div class="forgot">
                         <a href="#">Esqueceu sua senha?</a>
@@ -104,18 +104,22 @@
                             <div class="image-icon">
                                 <img src="imagem/escudo.png" class="security-icon" alt="segurança">
                             </div>
-                            Seus dados estão protegidosss
+                            Seus dados estão protegidos
                         </strong>
                         <p>Privacidade e segurança são nossa prioridade.</p>
                     </div>
                 </div>
             </div>
-
-            
+       
         </div>
         
-        <div id="mensagem" class="alerta"></div>
+    </div>
 
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <p id="popup-text"></p>
+            <button onclick="fecharPopup()">OK</button>
+        </div>
     </div>
 
     <script src="js/login.js"></script>
