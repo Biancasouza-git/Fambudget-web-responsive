@@ -301,13 +301,13 @@ body {
 
 /* parte preenchida */
 #orcamento::-webkit-progress-value {
-    background-color: #22c55e;
+    background-color: #2e7d32;
     border-radius: 10px;
 }
 
 /* Firefox */
 #orcamento::-moz-progress-bar {
-    background-color: #22c55e;
+    background-color: #2e7d32;
 }
 .porcentagem {
     font-size: 12px;
@@ -340,7 +340,7 @@ body {
   
 .meta-progress {
     height: 100%;
-    background: #4caf50;
+    background: #2e7d32;
 }
 
 .menu li {
@@ -360,4 +360,16 @@ body {
 .menu li img {
     width: 20px;
     height: 20px;
+}
+
+
+
+
+
+
+
+@media (max-width: 600px) {
+    .cards {
+        flex-direction: column;
+    }
 }
