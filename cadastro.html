@@ -75,7 +75,7 @@
                 <form id="registerForm">
                     <input type="text" id="name" class="input" placeholder="Nome completo" required>
                     <input type="email" id="email" class="input" placeholder="E-mail" required>
-                    <input type="text" id="phone" class="input" placeholder="Telefone">
+                    <input type="text" id="mobileNumber" class="input" placeholder="Telefone">
                     <input type="password" id="password" class="input" placeholder="Senha" required>
                     <input type="password" id="confirmPassword" class="input" placeholder="Confirmar senha" required>
 
@@ -103,6 +103,13 @@
             
         </div>
         
+    </div>
+
+    <div id="popup" class="popup hidden">
+        <div class="popup-content">
+            <p id="popup-text"></p>
+            <button onclick="fecharPopup()">OK</button>
+        </div>
     </div>
 
     <script src="js/register.js"></script>
