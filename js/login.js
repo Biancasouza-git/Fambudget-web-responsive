@@ -1,46 +1,44 @@
+function abrirPopup(mensagem) {
+  document.getElementById("popup-text").innerText = mensagem;
+  document.getElementById("popup").style.display = "flex";
+}
+
+function fecharPopup() {
+  document.getElementById("popup").style.display = "none";
+}
+
 const form = document.getElementById("loginForm");
 
 form.addEventListener("submit", async (event) => {
-    event.preventDefault();
+  event.preventDefault();
 
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
 
-    try {
-        const response = await fetch("http://localhost:3000/auth/login", {
-            method: "POST",
+  try {
+    const response = await fetch("http://localhost:3000/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ email, password })
+    });
 
-            headers: {
-                "Content-Type": "application/json"
-            },
+    const data = await response.json();
 
-            body: JSON.stringify({
-                email: email,
-                password: password
-            })
-        });
+    console.log("RESPOSTA LOGIN:", data); 
 
-        const data = await response.json();
-
-        const mensagem = document.getElementById("mensagem");
-
-        mensagem.innerText = data.message;
-        mensagem.className = "alerta sucesso";
-        mensagem.style.display = "block";
-
-        setTimeout(() => {
-            mensagem.style.display = "none";
-        }, 3000);
-
-    } catch (error) {
-        const mensagem = document.getElementById("mensagem");
-
-        mensagem.innerText = "Erro ao conectar com o servidor";
-        mensagem.className = "alerta erro";
-        mensagem.style.display = "block";
-
-        setTimeout(() => {
-            mensagem.style.display = "none";
-        }, 3000);
+    if (!response.ok || !data.access_token) {
+      abrirPopup(data.message || "Email ou senha inválidos");
+      return;
     }
+
+    localStorage.setItem("access_token", data.access_token);
+    localStorage.setItem("refresh_token", data.refresh_token);
+
+    window.location.href = "home.html";
+
+  } catch (error) {
+    abrirPopup("Usuário não existe");
+  }
 });
