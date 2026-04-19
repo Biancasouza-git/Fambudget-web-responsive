@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="imagem/logo_fambudget.png" type="image/png">
+    <link rel="stylesheet" href="transacoes.css">
+    <title>FamBudget</title>
+</head>
+
+<body>
+
+<!-- TOPO -->
+<header class="topo">
+    <div class="logo">
+        <img src="imagem/logo_fambudget.png" alt="FamBudget">
+        <span>FamBudget</span>
+    </div>
+
+    <div class="user">
+        <div class="avatar">M</div>
+        <span>Marcos</span>
+    </div>
+</header>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <ul class="menu">
+      <li onclick="irPara('home.html')">
+        <img src="vetorhome/casa.png">Início
+      </li>
+
+      <li onclick="irPara('transacoes.html')">
+        <img src="vetorhome/carteira.png">Transações
+      </li>
+
+      <li onclick="irPara('orcamentos.html')">
+        <img src="vetorhome/ocamento.png">Orçamentos
+      </li>
+
+      <li onclick="irPara('relatorios.html')">
+        <img src="vetorhome/relatorio.png">Relatórios
+      </li>
+    </ul>
+
+    <div class="divider"></div>
+
+    <ul class="menu">
+      <li onclick="irPara('configuracoes.html')">
+        <img src="vetorhome/configuracoes.png">Configurações
+      </li>
+
+      <li onclick="logout()">
+        <img src="vetorhome/logout.png">Sair
+      </li>
+    </ul>
+  </aside>
+
+  <!-- CONTEÚDO -->
+  <main class="main-content">
+    <div class="conteudo">
+        
+        <div class="card-topo">
+            <div class="top">
+                <h1>Transações</h1>
+                <button class="btn-add">+ Nova Transação</button>
+            </div>
+        </div>
+
+        <div class="saldo-card">
+            <h2 id="saldo">R$ 0,00</h2>
+            <p class="positivo">● Saldo Positivo</p>
+        </div>
+
+        <div class="card-filtros">
+            <div class="filtros">
+                <input type="text" placeholder="Buscar transações...">
+                <select><option>Categoria</option></select>
+                <select><option>Mês</option></select>
+                <select><option>Abril 2026</option></select>
+            </div>
+        </div>
+        
+
+        <div class="card-tabela">
+            <table class="tabela">
+                <thead>
+                <tr>
+                    <th>Tipo</th>
+                    <th>Categoria</th>
+                    <th>Descrição</th>
+                    <th>Data</th>
+                    <th>Valor</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                    <td class="receita">Receita</td>
+                    <td>Salário</td>
+                    <td>Salário</td>
+                    <td>01/04/2024</td>
+                    <td class="positivo">R$ 2.500,00</td>
+                </tr>
+
+                <tr>
+                    <td class="despesa">Despesa</td>
+                    <td>Aluguel</td>
+                    <td>Aluguel</td>
+                    <td>05/04/2024</td>
+                    <td class="negativo">- R$ 450,00</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+      
+
+    </div>
+  </main>
+
+</div>
+
+<script>
+function irPara(pagina){
+  window.location.href = pagina;
+}
+
+function logout(){
+  alert("Logout realizado!");
+}
+</script>
+
+</body>
+</html>
