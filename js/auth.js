@@ -30,9 +30,11 @@ async function register(req, res) {
   try {
     const { email, password } = req.body;
 
-    const response = await axios.post(`${API_URL}/auth/register`, {
+    const response = await axios.post(`${API_URL}/user/register`, {
+      name,
       email,
-      password,
+      mobileNumber,
+      password
     });
 
     return res.status(201).json(response.data);
