@@ -15,5 +15,4 @@ app.listem(PORT, () => {
 
 const path = require("path");
 
-// permite servir arquivos estáticos (HTML, CSS, JS)
 app.use(express.static(path.join(__dirname, "../frontend")));
