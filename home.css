@@ -115,15 +115,15 @@ body {
 }
   
 .avatar {
-    width: 35px;
+    width: 35px;          
     height: 35px;
-    background: #2e7d32;
-    color: white;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
+    color: white;
     font-weight: bold;
+    background: linear-gradient(135deg, #2e7d32, rgb(78, 187, 10));
 }
   
 .card {
@@ -362,14 +362,29 @@ body {
     height: 20px;
 }
 
-
-
-
-
-
-
 @media (max-width: 600px) {
     .cards {
         flex-direction: column;
     }
+}
+
+.positivo {
+    color: #2e7d32;
+}
+
+.negativo {
+    color: #d32f2f;
+}
+
+.mensagem {
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.mensagem.positivo {
+    color: #2e7d32;
+}
+
+.mensagem.negativo {
+    color: #d32f2f;
 }
