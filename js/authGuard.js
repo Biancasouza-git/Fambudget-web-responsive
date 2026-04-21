@@ -1,8 +1,11 @@
 (function () {
-  const token = localStorage.getItem("access_token");
+  const token = localStorage.getItem("accessToken");
 
-  // se não tiver token → volta pro login
-  if (!token) {
+  console.log("AUTH GUARD TOKEN:", token);
+
+  if (!token || token === "null" || token === "undefined") {
+    console.log("SEM TOKEN → REDIRECIONANDO");
     window.location.href = "index.html";
+    return;
   }
 })();
