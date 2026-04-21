@@ -24,21 +24,66 @@ form.addEventListener("submit", async (event) => {
       body: JSON.stringify({ email, password })
     });
 
-    const data = await response.json();
+    let data = {};
+    try {
+      data = await response.json();
+    } catch {
+      data = {};
+    }
 
-    console.log("RESPOSTA LOGIN:", data); 
+    console.log("LOGIN RESPONSE:", data);
 
-    if (!response.ok || !data.token.accessToken) {
-      abrirPopup(data.message || "Email ou senha inválidos");
+    if (!response.ok) {
+      let mensagemErro = "Email ou senha inválidos";
+
+      const msg = (data.message || data.detail || "").toLowerCase();
+
+      if (response.status === 401) {
+        mensagemErro = "Senha incorreta";
+      } else if (msg.includes("senha") || msg.includes("password")) {
+        mensagemErro = "Senha incorreta";
+      } else if (msg.includes("email") || msg.includes("user")) {
+        mensagemErro = "Usuário não existe";
+      }
+
+      abrirPopup(mensagemErro);
       return;
     }
 
-    localStorage.setItem("accessToken", data.token.accessToken);
-    localStorage.setItem("refreshToken", data.token.refreshToken);
+    const token =
+      data?.accessToken ||
+      data?.token ||
+      data?.token?.accessToken ||
+      data?.data?.accessToken ||
+      data?.data?.token ||
+      null;
+
+    console.log("TOKEN EXTRAÍDO:", token);
+
+    if (!token) {
+      abrirPopup("Erro: login não retornou token");
+      return;
+    }
+
+    localStorage.setItem("accessToken", token);
+    localStorage.setItem("refreshToken", data?.refreshToken || "");
+
+    let nomeUsuario = "Usuário";
+
+    if (data.user?.name || data.user?.nome) {
+      nomeUsuario = data.user.name || data.user.nome;
+    } else if (data.name || data.nome) {
+      nomeUsuario = data.name || data.nome;
+    } else if (email) {
+      nomeUsuario = email.split("@")[0];
+    }
+
+    localStorage.setItem("nomeUsuario", nomeUsuario);
 
     window.location.href = "home.html";
 
   } catch (error) {
-    abrirPopup("Usuário não existe");
+    console.error("ERRO REAL:", error);
+    abrirPopup("Erro ao conectar com o servidor");
   }
 });
