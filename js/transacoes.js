@@ -1,7 +1,3 @@
-document.addEventListener("DOMContentLoaded", async () => {
-  carregarUsuario();
-});
-
 function abrirModal() {
   document.getElementById("modal").style.display = "flex";
 }
@@ -10,15 +6,11 @@ function fecharModal() {
   document.getElementById("modal").style.display = "none";
 }
 
-function carregarUsuario() {
-  const nome = localStorage.getItem("nomeUsuario");
-
-  console.log("NOME:", nome);
-
-  if (!nome) return;
-
-  document.getElementById("nome-usuario").textContent = nome;
-  document.getElementById("avatar").textContent = nome.charAt(0).toUpperCase();
+window.onclick = function(event) {
+  let modal = document.getElementById("modal");
+  if (event.target === modal) {
+    modal.style.display = "none";
+  }
 }
 
 function salvarTransacao() {
@@ -33,87 +25,43 @@ function salvarTransacao() {
     return;
   }
 
-  let transacoes = JSON.parse(localStorage.getItem("transacoes")) || [];
+  let tabela = document.getElementById("tabela-body");
+  let linha = document.createElement("tr");
+  
+  let aviso = document.getElementById("sem-dados");
+  if (aviso) aviso.style.display = "none";
 
-  let nova = {
-    id: Date.now(),
-    tipo,
-    categoria,
-    descricao,
-    valor: parseFloat(valor),
-    data
-  };
+  let dataFormatada = new Date(data).toLocaleDateString("pt-BR");
 
-  transacoes.push(nova);
-  localStorage.setItem("transacoes", JSON.stringify(transacoes));
+  let valorFormatado = parseFloat(valor).toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL"
+  });
 
-  fecharModal();
+  linha.innerHTML = `
+    <td class="${tipo === 'Receita' ? 'receita' : 'despesa'}">${tipo}</td>
+    <td>${categoria}</td>
+    <td>${descricao}</td>
+    <td>${dataFormatada}</td>
+    <td class="${tipo === 'Receita' ? 'positivo' : 'negativo'}">
+      ${tipo === 'Despesa' ? '- ' : ''}${valorFormatado}
+    </td>
+  `;
+
+  tabela.appendChild(linha);
+  
+
+  fechrModal();
   limparFormulario();
-  renderizarTabela();
+  verificarTabela();
 }
+
 
 function limparFormulario() {
   document.getElementById("tipo").value = "Tipo";
-  document.getElementById("categoria").value = "Categoria";
   document.getElementById("descricao").value = "";
   document.getElementById("valor").value = "";
   document.getElementById("data").value = "";
-}
-
-function renderizarTabela(lista = null) {
-  let tabela = document.getElementById("tabela-body");
-  tabela.innerHTML = "";
-
-  let transacoes = lista || JSON.parse(localStorage.getItem("transacoes")) || [];
-
-  if (transacoes.length === 0) {
-    tabela.innerHTML = `
-      <tr>
-        <td colspan="6" style="text-align:center; padding: 20px;">
-          Nenhuma transação cadastrada
-        </td>
-      </tr>
-    `;
-    atualizarSaldo();
-    return;
-  }
-
-  transacoes.forEach(t => {
-    let dataObj = new Date(t.data + "T12:00:00");
-    let dataFormatada = dataObj.toLocaleDateString("pt-BR");
-
-    let valorFormatado = t.valor.toLocaleString("pt-BR", {
-      style: "currency",
-      currency: "BRL"
-    });
-
-    let linha = document.createElement("tr");
-
-    linha.innerHTML = `
-      <td>${t.tipo}</td>
-      <td>${t.categoria}</td>
-      <td>${t.descricao}</td>
-      <td>${dataFormatada}</td>
-      <td class="${t.tipo === 'Receita' ? 'positivo' : 'negativo'}">
-        ${t.tipo === 'Despesa' ? '- ' : ''}${valorFormatado}
-      </td>
-      <td>
-        <button onclick="deletar(${t.id})" class="btn-delete">🗑</button>
-      </td>
-    `;
-
-    tabela.appendChild(linha);
-  });
-
-  atualizarSaldo();
-}
-
-function deletar(id) {
-  let transacoes = JSON.parse(localStorage.getItem("transacoes")) || [];
-  transacoes = transacoes.filter(t => t.id !== id);
-
-  localStorage.setItem("transacoes", JSON.stringify(transacoes));
-  renderizarTabela();
 }
 
 function filtrarTabela() {
@@ -121,76 +69,45 @@ function filtrarTabela() {
   let categoria = document.getElementById("filtro-categoria").value;
   let tipo = document.getElementById("filtro-tipo").value;
 
-  let transacoes = JSON.parse(localStorage.getItem("transacoes")) || [];
+  let linhas = document.querySelectorAll("#tabela-body tr");
 
-  let filtradas = transacoes.filter(t => {
-    let matchBusca =
-      t.descricao.toLowerCase().includes(busca) ||
-      t.categoria.toLowerCase().includes(busca);
+  linhas.forEach(linha => {
+    let colTipo = linha.children[0].textContent;
+    let colCategoria = linha.children[1].textContent;
+    let colDescricao = linha.children[2].textContent.toLowerCase();
 
-    let matchCategoria = categoria === "" || t.categoria === categoria;
-    let matchTipo = tipo === "" || t.tipo === tipo;
+    let matchBusca = colDescricao.includes(busca);
+    let matchCategoria = categoria === "" || colCategoria === categoria;
+    let matchTipo = tipo === "" || colTipo === tipo;
 
-    return matchBusca && matchCategoria && matchTipo;
+    if (matchBusca && matchCategoria && matchTipo) {
+      linha.style.display = "";
+    } else {
+      linha.style.display = "none";
+    }
   });
-
-  renderizarTabela(filtradas);
 }
 
+// LIMPAR FILTROS
 function limparFiltros() {
   document.getElementById("filtro-busca").value = "";
   document.getElementById("filtro-categoria").value = "";
   document.getElementById("filtro-tipo").value = "";
 
-  renderizarTabela(); 
+  filtrarTabela(); // reaplica filtro (mostra tudo)
 }
 
-function resetarFiltros() {
-  document.getElementById("filtro-busca").value = "";
-  document.getElementById("filtro-categoria").value = "";
-  document.getElementById("filtro-tipo").value = "";
-}
+// verificar tabela 
 
-function atualizarSaldo() {
-  let transacoes = JSON.parse(localStorage.getItem("transacoes")) || [];
+function verificarTabela() {
+  let tabela = document.getElementById("tabela-body");
+  let aviso = document.getElementById("sem-dados");
 
-  let saldo = 0;
-
-  transacoes.forEach(t => {
-    if (t.tipo === "Receita") {
-      saldo += Number(t.valor);
-    } else {
-      saldo -= Number(t.valor);
-    }
-  });
-
-  const saldoEl = document.getElementById("saldo");
-  const statusEl = document.getElementById("status-saldo");
-
-  saldoEl.textContent = saldo.toLocaleString("pt-BR", {
-    style: "currency",
-    currency: "BRL"
-  });
-
-  saldoEl.className = "";
-  if (statusEl) statusEl.className = "";
-
-  if (saldo >= 0) {
-    saldoEl.classList.add("positivo");
-    if (statusEl) {
-      statusEl.textContent = "● Saldo positivo";
-      statusEl.classList.add("positivo");
-    }
+  if (tabela.children.length > 1) {
+    aviso.style.display = "none";
   } else {
-    saldoEl.classList.add("negativo");
-    if (statusEl) {
-      statusEl.textContent = "● Saldo negativo";
-      statusEl.classList.add("negativo");
-    }
+    aviso.style.display = "";
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  resetarFiltros();
-  renderizarTabela();
-});
+document.addEventListener("DOMContentLoaded", verificarTabela);
