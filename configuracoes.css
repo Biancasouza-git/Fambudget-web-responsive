@@ -1,0 +1,443 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+  background-color: #f5f6f8;
+  overflow-y: auto;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+
+/* TOPO */
+.topo {
+  width: 100%;
+  height: 70px;
+  display: flex;
+  position: fixed;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  padding: 15px 25px;
+  border-bottom: 1px solid #e0e0e0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+/* LOGO */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img {
+  width: 35px;
+}
+
+.logo span {
+  font-size: 20px;
+  font-weight: bold;
+  color: #2e7d32;
+}
+
+/* USER */
+.user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar {
+    width: 35px;          
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    background: linear-gradient(135deg, #2e7d32, rgb(78, 187, 10));
+}
+
+
+/* LAYOUT */
+.layout {
+  display: flex;
+}
+
+html, body {
+  height: auto;
+}
+
+/* SIDEBAR */
+.sidebar {
+  position: fixed;
+  top: 70px;
+  left: 0;
+  width: 230px;
+  height: calc(100vh - 70px);
+  background: #fff;
+  padding: 20px;
+  border-right: 1px solid #e0e0e0;
+}
+
+.menu {
+  list-style: none;
+}
+
+.menu li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #555;
+}
+
+.menu li:hover {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.divider {
+  height: 1px;
+  background: #e0e0e0;
+  margin: 20px 0;
+}
+
+.menu li img {
+  width: 20px;
+  height: 20px;
+}
+
+/* TEMA ESCURO */
+body.dark {
+  background: #121212;
+  color: #eee;
+}
+
+body.dark .card {
+  background: #1e1e1e;
+}
+
+body.dark .sidebar {
+  background: #1a1a1a;
+  border-right: 1px solid #333;
+}
+
+body.dark .sidebar li {
+  color: #ccc;
+}
+
+body.dark .sidebar li.active {
+  background: #2e7d32;
+  color: white;
+}
+
+body.dark input,
+body.dark select {
+  background: #2a2a2a;
+  color: white;
+  border: 1px solid #444;
+}
+
+
+.logo {
+  color: #2e7d32;
+  margin-bottom: 20px;
+}
+
+/* ICONES */
+.icon {
+  width: 18px;
+  margin-right: 10px;
+}
+
+.icon-img {
+  object-fit: contain;
+  width: 22px;
+  height: 22px;
+}
+
+.icon-title {
+  width: 20px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.card h3{
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.icon-tag {
+  width: 14px;
+  margin-right: 5px;
+}
+
+/* CONTENT */
+.content {
+  margin-left: 230px;
+  margin-top: 90px; /* ESSENCIAL */
+  width: calc(100% - 230px);
+  padding: 30px;
+}
+
+/* TOPBAR */
+.topbar {
+  text-align: right;
+  margin-bottom: 10px;
+}
+
+/* TITULOS */
+h1 {
+  margin-bottom: 5px;
+}
+
+.sub {
+  color: gray;
+  margin-bottom: 20px;
+}
+
+/* CARDS */
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  transition: 0.3s;
+}
+
+/* PERFIL */
+.perfil {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.avatar-config {
+  width: 55px;
+  height: 55px;
+  background: #ccc;
+  border-radius: 50%;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-top: 5px;
+}
+
+/* LINHAS */
+.linha {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 15px 0;
+}
+
+/* BOTÕES */
+.btn {
+  background: #2e7d32;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn:hover {
+  background: #256628;
+}
+
+.btn-outline {
+  border: 1px solid #2e7d32;
+  background: transparent;
+  color: #2e7d32;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+.btn-outline:hover {
+  background: #2e7d32;
+  color: white;
+}
+
+.btn-danger {
+  background: #d32f2f;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-danger:hover {
+  background: #b71c1c;
+}
+
+/* TEMA */
+.tema button {
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  background: white;
+  cursor: pointer;
+}
+
+.tema .ativo {
+  background: #2e7d32;
+  color: white;
+}
+
+/* TAGS */
+.tags span {
+  display: inline-flex;
+  align-items: center;
+  background: #f1e7c6;
+  padding: 6px 10px;
+  border-radius: 8px;
+  margin: 5px;
+  font-size: 14px;
+}
+
+/* FLEX */
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* BOXES */
+.box {
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.verde {
+  background: #e8f5e9;
+}
+
+.vermelho {
+  background: #ffebee;
+}
+
+
+/* SWITCH */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 45px;
+  height: 24px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* FUNDO */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.3s;
+  border-radius: 34px;
+  box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+}
+
+/* BOLINHA */
+.slider::before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.3s;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* ATIVO */
+.switch input:checked + .slider {
+  background-color: #2e7d32;
+}
+
+/* ANIMAÇÃO */
+.switch input:checked + .slider::before {
+  transform: translateX(21px);
+}
+
+/* CONTAINER  TEMA */
+.tema-toggle {
+  display: inline-flex;
+  border: 1px solid #2e7d32;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* BOTÕES */
+.tema-toggle button {
+  padding: 6px 14px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: #2e7d32;
+  transition: 0.2s;
+}
+
+/* SEPARAÇÃO VISUAL */
+.tema-toggle button:not(:last-child) {
+  border-right: 1px solid #2e7d32;
+}
+
+/* ATIVO (verde) */
+.tema-toggle .ativo {
+  background: #2e7d32;
+  color: white;
+}
+ 
+/* RESPONSIVO 
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .content {
+    margin-left: 0;
+  }
+} */
+
