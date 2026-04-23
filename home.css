@@ -173,6 +173,14 @@ body {
     font-size: 20px;
 }
 
+.seta-positiva {
+  color: #2e7d32;
+}
+
+.seta-negativa {
+  color: #d32f2f;
+}
+
 /* positivo */
 .positivo {
     color: #2e7d32;
