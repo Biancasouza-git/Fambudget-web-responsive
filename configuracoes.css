@@ -32,16 +32,21 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
+  margin-top: 20px;
 }
 
 .logo img {
   width: 35px;
+  height: 35px; /* 🔥 força alinhamento */
+  object-fit: contain;
 }
 
 .logo span {
   font-size: 20px;
   font-weight: bold;
   color: #2e7d32;
+  display: flex;
+  align-items: center;
 }
 
 /* USER */
@@ -52,15 +57,15 @@ body {
 }
 
 .avatar {
-    width: 35px;          
-    height: 35px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-weight: bold;
-    background: linear-gradient(135deg, #2e7d32, rgb(78, 187, 10));
+  width: 35px;          
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  background: linear-gradient(135deg, #2e7d32, rgb(78, 187, 10));
 }
 
 
@@ -117,38 +122,6 @@ html, body {
   height: 20px;
 }
 
-/* TEMA ESCURO */
-body.dark {
-  background: #121212;
-  color: #eee;
-}
-
-body.dark .card {
-  background: #1e1e1e;
-}
-
-body.dark .sidebar {
-  background: #1a1a1a;
-  border-right: 1px solid #333;
-}
-
-body.dark .sidebar li {
-  color: #ccc;
-}
-
-body.dark .sidebar li.active {
-  background: #2e7d32;
-  color: white;
-}
-
-body.dark input,
-body.dark select {
-  background: #2a2a2a;
-  color: white;
-  border: 1px solid #444;
-}
-
-
 .logo {
   color: #2e7d32;
   margin-bottom: 20px;
@@ -173,11 +146,11 @@ body.dark select {
 }
 
 .card h3{
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 20px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
 .icon-tag {
@@ -187,10 +160,12 @@ body.dark select {
 
 /* CONTENT */
 .content {
-  margin-left: 230px;
-  margin-top: 90px; /* ESSENCIAL */
-  width: calc(100% - 230px);
-  padding: 30px;
+  margin-left: 220px;
+  margin-top: 90px;
+  padding: 20px;
+
+  width: calc(100% - 220px);
+  max-width: 100%;
 }
 
 /* TOPBAR */
@@ -215,7 +190,10 @@ h1 {
   padding: 20px;
   border-radius: 12px;
   margin-bottom: 20px;
-  transition: 0.3s;
+
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 /* PERFIL */
@@ -425,19 +403,126 @@ select {
   background: #2e7d32;
   color: white;
 }
- 
-/* RESPONSIVO 
-@media (max-width: 900px) {
-  .grid {
-    grid-template-columns: 1fr;
-  }
+/* Exportar e excluir */
+/* CONTAINER DADOS */
+.dados-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
 
-  .sidebar {
-    display: none;
-  }
+  width: 100%;
+  max-width: 100%;
+}
 
-  .content {
-    margin-left: 0;
-  }
-} */
+/* ITEM */
+.dados-item {
+  display: flex;
+  flex: 1;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+/* INFO (icone + texto) */
+.dados-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* ICONE */
+.dados-icon {
+  width: 45px;
+  height: 45px;
+  min-width: 45px;
+  max-width: 45px;
+  max-height: 45px;
+  overflow: hidden;
+
+  display: flex;              
+  align-items: center;        
+  justify-content: center;
+
+  border-radius: 10px;
+}
+
+.dados-icon img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  display: block;
+}
+
+/* CORES */
+.dados-item.verde {
+  background: #e8f5e9;
+}
+
+.dados-item.verde .dados-icon {
+  background: #c8e6c9;
+  color: #2e7d32;
+}
+
+.dados-item.vermelho {
+  background: #ffebee;
+}
+
+.dados-item.vermelho .dados-icon {
+  background: #ffcdd2;
+  color: #c62828;
+}
+
+.dados-item {
+  transition: 0.2s;
+}
+
+.dados-item:hover {
+  transform: translateY(-3px);
+}
+
+/* TEXTO */
+.dados-item p {
+  color: #666;
+  font-size: 14px;
+}
+
+/* BOTÃO VERMELHO OUTLINE */
+.btn-red-outline {
+  background: transparent;
+  color: #e74c3c;
+  border: 2px solid #e74c3c;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.btn-red-outline:hover {
+  background: #e74c3c;
+  color: white;
+}
+
+/* BOTAO VERDE OUTLINE */
+.btn-outline {
+  background: transparent;
+  color: #2e7d32;
+  border: 2px solid #2e7d32;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.btn-outline:hover {
+  background: #2e7d32;
+  color: white;
+}
+
+
 
