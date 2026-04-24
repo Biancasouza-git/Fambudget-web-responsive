@@ -51,15 +51,15 @@ body {
 }
 
 .avatar {
-    width: 35px;          
-    height: 35px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-weight: bold;
-    background: linear-gradient(135deg, #2e7d32, rgb(78, 187, 10));
+  width: 35px;          
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  background: linear-gradient(135deg, #2e7d32, rgb(78, 187, 10));
 }
 
 /* LAYOUT */
