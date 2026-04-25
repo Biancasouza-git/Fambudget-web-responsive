@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="cadastro.css">
     <link rel="icon" href="imagem/logo_fambudget.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <title>FamBudget</title>
 </head>
 <body>
@@ -76,9 +77,14 @@
                     <input type="text" id="name" class="input" placeholder="Nome completo" required>
                     <input type="email" id="email" class="input" placeholder="E-mail" required>
                     <input type="text" id="mobileNumber" class="input" placeholder="Telefone">
-                    <input type="password" id="password" class="input" placeholder="Senha" required>
-                    <input type="password" id="confirmPassword" class="input" placeholder="Confirmar senha" required>
-
+                    <div class="input-password">
+                        <input type="password" id="password" class="input" placeholder="Senha" required>
+                        <i class="fa-solid fa-eye togglePassword" data-target="password"></i>
+                    </div>
+                    <div class="input-password">
+                        <input type="password" id="confirmPassword" class="input" placeholder="Confirmar senha" required>
+                        <i class="fa-solid fa-eye togglePassword" data-target="confirmPassword"></i>
+                    </div>
                     <button type="submit" class="btn-sec">Cadastrar</button>
                 </form>
 
