@@ -173,14 +173,6 @@ body {
     font-size: 20px;
 }
 
-.seta-positiva {
-  color: #2e7d32;
-}
-
-.seta-negativa {
-  color: #d32f2f;
-}
-
 /* positivo */
 .positivo {
     color: #2e7d32;
@@ -322,6 +314,34 @@ body {
     color: #555;
     white-space: nowrap;
 }
+  
+.metas {
+    margin-top: 20px;
+}
+  
+.meta-item {
+    margin-top: 15px;
+}
+  
+.meta-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+  
+.meta-bar {
+    width: 100%;
+    height: 10px;
+    background: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+  
+.meta-progress {
+    height: 100%;
+    background: #2e7d32;
+}
 
 .menu li {
     display: flex;
@@ -369,54 +389,10 @@ body {
     color: #d32f2f;
 }
 
-/* Família */
-.familia-lista {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+.seta-positiva {
+  color: #2e7d32;
 }
 
-.familia-card{
-    margin-top: 20px;
-}
-
-.flex {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.membro {
-    padding: 10px;
-    border-radius: 8px;
-    background: #ffffff;
-}
-
-.titulo-card {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: black;
-}
-
-.icon-title {
-    width: 22px;
-    height: 22px;
-    object-fit: contain;
-}
-
-.btn {
-  background: #2e7d32;
-  color: #ffff;
-  border: none;
-  padding: 10px 16px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 500;
-  transition: 0.2s;
-}
-
-.btn:hover {
-  background: #1b5e20;
-  transform: translateY(-1px);
+.seta-negativa {
+  color: #d32f2f;
 }
