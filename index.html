@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="imagem/logo_fambudget.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <title>FamBudget</title>
 </head>
 <body>
@@ -75,10 +76,12 @@
 
                 <form id="loginForm">
                     <input type="email" id="email" class="input" placeholder="E-mail" required>
-                    <input type="password" id="password" class="input" placeholder="Senha" required>
-
+                    <div class="input-password">
+                        <input type="password" id="password" class="input" placeholder="Senha" required>
+                        <i class="fa-solid fa-eye" id="togglePassword"></i>
+                    </div>
                     <div class="forgot">
-                        <a href="#">Esqueceu sua senha?</a>
+                        <a href="forgot-password.html">Esqueceu sua senha?</a>
                     </div>
 
                     <button type="submit" class="btn-primary">Entrar</button>
