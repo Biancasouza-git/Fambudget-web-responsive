@@ -55,7 +55,7 @@
         </h3>
 
         <div class="perfil">
-            <div class="avatar-config"></div>
+            <div class="avatar-config" id="avatarCard">U</div>
             <div>
                 <strong id="nomeUsuario">Nome</strong>
                 <p id="emailUsuario">email@email.com</p>
@@ -128,23 +128,6 @@
         </div>
     </div>
 
-    <!-- CATEGORIAS -->
-    <div class="card">
-        <div class="flex">
-            <h3>
-                <img src="imagem/iconConfig/rotulo.png" class="icon-img">
-                Categorias Personalizadas
-            </h3>
-            <button class="btn">+ Nova Categoria</button>
-        </div>
-
-        <div class="divider"></div>
-
-        <div class="tags">
-            <!-- adicionar pelo forms -->
-        </div>
-    </div>
-
     <!-- SEGURANÇA -->
     <div class="card">
         <h3>
@@ -207,10 +190,68 @@
     </div>
 </div>
 
+<!-- POPUP EDITAR PERFIL -->
+<div class="modal" id="modalPerfil">
+    <div class="modal-content">
+  
+        <div class="header-modal">
+            <div class="icon-circle">
+                <img src="imagem/iconConfig/perfil.png">
+            </div>
+
+            <h2>Editar Perfil</h2>
+            <p class="sub-modal">Atualize suas informações pessoais</p>
+        </div>
+    
+        <div class="linha-verde"></div>
+        <h3 class="foto-perfil">Foto de perfil</h3>
+    
+        <!-- AVATAR -->
+        <div class="modal-avatar">
+            <div class="avatar-wrapper">
+                <div class="avatar-preview" id="avatarPreview">U</div>
+
+                <div class="avatar-camera">
+                    <img src="imagem/iconConfig/simbolo-de-interface-de-camera-fotografica-para-botao.png" alt="">
+                </div>
+            </div>
+            
+            <div class="upload-card">
+                <div class="upload-area">
+                    <label for="inputAvatar" class="custom-file-btn">
+                        <img src="imagem/iconConfig/imagem.png" class="camera-config" alt=""> Escolher imagem
+                    </label>
+                    <span id="fileName">Nenhum arquivo escolhido</span>
+                    <input type="file" id="inputAvatar" accept="image/*">
+                </div>
+            </div>
+
+            <small class="info-arquivo">
+                Formatos aceitos: JPG, PNG. Máx: 5MB
+            </small>
+  
+        <!-- INPUT NOME -->
+            <div class="modal-field">
+                <label>Nome de usuário</label>
+                <div class="input-icon">
+                    <div class="icon-box">
+                        <img src="imagem/iconConfig/perfil.png" alt="">
+                    </div>
+                    <input type="text" id="inputNome" placeholder="Usuário">
+                </div>
+                <small class="info">Esse será o nome exibido no sistema</small>
+            </div>
+    
+            <!-- BOTÕES -->
+            <div class="modal-actions">
+                <button class="btn-outline-modal" id="cancelarModal">Cancelar</button>
+                <button class="btn" id="salvarPerfil">Salvar alterações</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 
-</div>
-</div>
 
 <script src="js/configuracoes.js" defer></script> 
 <script src="main.js" defer></script>
